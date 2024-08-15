@@ -8,9 +8,10 @@ from psycopg2 import OperationalError as Psycopg20Error
 from django.db.utils import OperationalError
 from django.core.management.base import BaseCommand
 
+
 class Comand(BaseCommand):
     """Django command to wait for database."""
-    
+
     def handle(self, *args, **options):
         """Entrypoint for command."""
         self.stdout.write('Waiting for database...')
@@ -22,4 +23,4 @@ class Comand(BaseCommand):
             except (Psycopg20Error, OperationalError):
                 self.stdout.write('Database unavailable, waiting 1 seoncd...')
                 time.sleep(1)
-        self.stdout.write(self.style.SUCCESS('Database available!')) 
+        self.stdout.write(self.style.SUCCESS('Database available!'))
