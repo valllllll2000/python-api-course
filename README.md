@@ -35,5 +35,13 @@ Lint
 `docker compose run --rm app sh -c "python manage.py wait_for_db && flake8"`
 `docker compose run --rm app sh -c "flake8"`
 
+Migrations
+`sudo docker compose run --rm app sh -c "python manage.py makemigrations"`
+`docker compose run --rm app sh -c "python manage.py wait_for_db && python manage.py migrate"`
 
+`docker volume ls`
+`docker compose down`
+`docker volume rm name`
 
+Create super user
+`docker compose run --rm app sh -c "python manage.py createsuperuser"`
