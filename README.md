@@ -28,7 +28,7 @@ add `import psycopg2` if psycopg2 errors
 Test
 `docker compose run --rm app sh -c "python manage.py test"`
 
-Lint
+Run command
 `docker compose run --rm app sh -c "python manage.py wait_for_db"`
 
 Lint
