@@ -1,5 +1,5 @@
 """
-Tests for recipe API
+Tests for recipe APIs.
 """
 
 from decimal import Decimal
@@ -33,6 +33,7 @@ def create_recipe(user, **params):
     recipe = Recipe.objects.create(user=user, **defaults)
     return recipe
 
+
 class PublicRecipeAPITests(TestCase):
     """Test unauthenticated API requests."""
 
@@ -46,7 +47,7 @@ class PublicRecipeAPITests(TestCase):
         self.assertEquals(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
-class PrivateREcipeAPITests(TestCase):
+class PrivateRecipeApiTests(TestCase):
     """Test authenticated API requests."""
 
     def setUp(self):
@@ -79,6 +80,7 @@ class PrivateREcipeAPITests(TestCase):
         create_recipe(user=self.user)
 
         res = self.client.get(RECIPES_URL)
+        
         recipes = Recipe.objects.filter(user=self.user)
         serializer = RecipeSerializer(recipes, many=True)
         self.assertEqual(res.status_code, status.HTTP_200_OK)
